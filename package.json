@@ -1,0 +1,25 @@
+{
+  "name": "timeworkshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^4.1.1"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev":"electron . --debug",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caster-evolution/TimeWorkshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caster-evolution/TimeWorkshop/issues"
+  },
+  "homepage": "https://github.com/caster-evolution/TimeWorkshop#readme"
+}

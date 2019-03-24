@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+</head>
+
+<body>
+    <div id="t"></div>
+    <button onclick="begin();">begin</button>
+    <button onclick="pause();">pause</button>
+    <button onclick="reset();">reset</button>
+
+    <script>
+
+        function send_notice() {
+            let myNotification = new Notification("It's High noon", {
+                body: "It's High noon"
+            })
+
+            myNotification.onclick = () => {
+                console.log('Notification clicked')
+            }
+        }
+    </script>
+
+    <script>
+
+        //单纯分钟和秒倒计时
+        function CountdownApp(time) {
+            var that = this;
+
+            this._initialTime = time;
+
+            this._timer = null;
+            this._t = time;
+
+            this._drawText = function () {
+                m = Math.floor(that._t / 60);
+                s = Math.floor(that._t % 60);
+                document.getElementById("t").innerHTML = m + "分钟" + s + "秒";
+            }
+            this._drawText();
+
+
+            this.begin = function () {
+                that._drawText();
+                that._timer = setInterval(that._countDown, 1000);
+            };
+
+            this.pause = function () {
+                clearInterval(that._timer);
+            }
+
+            this.reset = function () {
+                that.pause();
+                that._t = that._initialTime;
+                that._drawText();
+            }
+
+            this._countDown = function () {
+                that._t--;
+                that._drawText();
+                if (that._t <= 0) {
+                    clearInterval(that._timer);
+                    send_notice();
+                }
+            }
+        }
+
+        var countdownApp = new CountdownApp(10);
+
+        function begin() {
+            countdownApp.begin();
+        }
+
+        function pause() {
+            countdownApp.pause();
+        }
+        function reset() {
+            countdownApp.reset();
+        }
+
+    </script>
+</body>
+
+</html>
